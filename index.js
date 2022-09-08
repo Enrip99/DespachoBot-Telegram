@@ -19,7 +19,8 @@ const Webcam = NodeWebcam.create( opts );
 
 const bot = new TelegramBot(config.token, {polling: true});
 
-bot.onText(/^(alguien despacho(\?*)|\/alguiendespacho)$/i, (msg, match) => {
+bot.onText(/^(alguien despacho(\?*)|\/alguiendespacho(@(.+))?)$/i, (msg, match) => {
+		console.log(msg)
 		takePicAndSend(msg.chat.id)
 })
 
