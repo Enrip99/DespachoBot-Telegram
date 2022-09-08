@@ -20,12 +20,11 @@ const Webcam = NodeWebcam.create( opts );
 const bot = new TelegramBot(config.token, {polling: true});
 
 bot.onText(/^(alguien despacho(\?*)|\/alguiendespacho(@(.+))?)$/i, (msg, match) => {
-		console.log(msg)
 		takePicAndSend(msg.chat.id)
 })
 
 bot.on('sticker', (msg) => {
-	if (msg.sticker.file_unique_id == 'AgADCwEAAvOhJgo'){
+	if(config.StickerList.indexOf(msg.sticker.file_unique_id) > -1){
 		takePicAndSend(msg.chat.id)
 	}
 })
